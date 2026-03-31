@@ -1,0 +1,31 @@
+server:
+  port: 8080
+logging:
+  level:
+    io.netty.handler.codec.http.HttpObjectDecoder: ERROR
+    reactor.netty.http.server.HttpServer: ERROR
+    org.springframework.boot.web.embedded.netty.NettyWebServer: ERROR
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: taskservice
+    version: 0.0.1
+  config:
+    import:
+      - optional:file:.env[.properties]
+  liquibase:
+    change-log: db/changelog/changelog.xml
+    enabled: true
+  web:
+    error:
+      include-binding-errors: always #test
+      include-message: always
+  datasource:
+    url: jdbc:postgresql://db:5432/taskservice
+#  datasource:
+#    hikari:
+#      jdbc-url: jdbc:postgresql://db:5432/taskservice
+#      password: ${DATABASE_USERNAME}
+#      username: ${DATABASE_PASSWORD}
