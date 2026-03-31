@@ -21,7 +21,7 @@ public class Config {
     @Bean
     DataSource dataSource() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://localhost:5432/taskservice");
+        config.setJdbcUrl("jdbc:postgresql://db:5432/taskservice");
         config.setUsername("admin");
         config.setPassword("admin");
         config.setDriverClassName("org.postgresql.Driver");
